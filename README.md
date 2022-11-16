@@ -22,6 +22,11 @@ sudo docker ps
 sudo docker cp <containerID>:/app/models/<model name> models/
 ```
 
+## then go back to the previous shell and do 
+```
+crtl-c
+```
+
 ## check if the new models is in the folder
 ```
 ls models/
@@ -29,3 +34,7 @@ ls models/
 
 ## sprung up the server
 sudo docker-compose up -d
+
+
+# debugging
+if you need to debug the rasa server, please add -vv to the docker-compose.yml as the last line under command. 
