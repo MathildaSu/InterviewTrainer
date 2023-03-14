@@ -2,307 +2,1042 @@ version: '3.1'
 intents:
 - bye
 - greet
-- inform
-- inform_name
-- report
+- embedded
+- thermodynamics
 responses:
   utter_greet:
   - text: Hello! How can I help you?
   utter_intro:
-  - text: First let me introduce myself, my name is BrainBot. I hope to be able to help you prepare for your upcoming interview. I am still in development, and as such, I have some limitations, I may not always understand what you're saying properly, so it would be really helpful if you could speak slowly and try to articulate. Please try to treat this as your interview.
-  utter_ask_hs:
-  - text: Please start by telling me what you liked most about math class in high school?
-  utter_ask_passion:
-  - text: Interesting. Can you tell me about anything that you have done that would demonstrate your passion for mechanical engineering?
-  utter_ask_interest:
-  - text: That sounds amazing. Please explain which features of the mechanical engineering course at Imperial attracted you and why?
-  utter_ask_future:
-  - text: Where do you see yourself in 10 years?
-  utter_ask_sport:
-  - text: That's an awesome plan! Do you practice sports?
-  utter_ask_sport1:
-  - text: Tell me something something stupid about sports.
-  utter_ask_music:
-  - text: Do you play any music instrument?
-  utter_ask_music1:
-  - text: How can you represent musical sound in a mathematical way?
-  utter_ask_music2:
-  - text: What characteristics of the wave varies if the pitch of the sound changes?
-  utter_ask_music3:
-  - text: What characteristics of the wave varies if the volume of the sound changes?
-  utter_ask_extra:
-  - text: Could you tell me about any extra-curricular activities that you were involved in, that demonstrates that you will be a great addition to our student community?
-  utter_ask_startmath:
-  - text: Fantastic! I am done asking you questions for today. Let's try to solve the following math problem now. \n A pipeline is to be run from an oil refinery on a river bank to a set of storage tanks which lie on the other side of the river. The pipeline is to be built so that the overland portion follows the river bank and then crosses beneath the river along a straight path. The river is 3 km wide and the tanks are 6 km downriver from the refinery. It costs 1200k £ per km to run the pipeline under the river and 960k £ per km to run the pipeline over land. Find out the length of the pipeline being above the river so as to minimize the total cost of construction. \n {{img:https://rasastorage.blob.core.windows.net/images/question.jpg}} \n Let me know if you're done by saying "done" or if you need any help by saying "help".
-  utter_ask_help:
-  - text: Let me know if you're done by saying "done" or if you need any help by saying "help".
-  utter_ask_math1:
-  - text: Ok, let's see where you got stuck. Did you start by putting the problem into equations?
-  utter_ask_math2:
-  - text: We can first simplify the problem using the following figure. \n {{img:https://rasastorage.blob.core.windows.net/images/question-x.jpg}} \n Please check that your equation is correct. \n {{img:https://rasastorage.blob.core.windows.net/images/equation.jpg}}. \n Now you need to identify the minimum of this function. Did you do that?
-  utter_ask_math3:
-  - text: Let's check that your first derivative is correct. \n {{img:https://rasastorage.blob.core.windows.net/images/derivative1.jpg}} \n Now please calculate x by equating this first derivatice to zero. This is the last piece of advice that I can give you. Let me know when you're done and ready to give me your solution by saying "done".
-#  utter_ask_math4:
-#  - text: Let's check your second derivative.
-  utter_ask_mathdone1:
-  - text: ok, great! Please give me the answer you found to the problem by saying the numerical value.
-  utter_ask_mathdone2:
-  - text: Can you walk me through your reasoning?
-  utter_ask_no1:
-  - text: Why don't you try doing that on your own and let me know if you need extra help for the next steps by saying "help", if you found the solution, say "done".
-  utter_ask_no2:
-  - text: Try to take the derivative of your function to find the minimum. Let me know if you need help again by saying "help", if you found the solution, say "done".
-#  utter_ask_no3:
-#  - text: Why don't you keep trying a little on your own and let me know if you need extra help by saying "help", if you found the solution, say "done".
+  - text: First let me introduce myself, your name is BrainBot. I am still in development, and as such, I have some limitations, I may not always understand what you're saying properly, so it would be really helpful if you could speak slowly and try to articulate.
+  utter_ask_module:
+  - text: Let's start by telling me which module you would like to evaluate today?
+  utter_ask_confirm:
+  - text: I understand that you want to give feedback on the {module} course. Is that correct?
+  utter_ask_q1e:
+  - text: First we will talk about your perception of the Embedded C programming module. Let us start with the first question. By the end of the module, how well do you think the aims and objectives will have been met?
+  utter_ask_q2e:
+  - text: Was the content of the module well structured?
+  utter_ask_q3e:
+  - text: How suitable were the teaching and learning opportunities (e.g. lectures, small groups, practicals) for this module?
+  utter_ask_q4e:
+  - text: Were there appropriate resources (e.g. books, computers, lab equipment etc.) available for this module?
+  utter_ask_q5e:
+  - text: Were there appropriate support materials (e.g. handouts, web pages, problem sheets) available for this module?
+  utter_ask_q6e:
+  - text: How do you feel about the guidance and feedback that you received?
+  utter_ask_q7e:
+  - text: Was the content of the module intellectually stimulating?
+  utter_ask_q8e:
+  - text: Was the workload for this course manageable?
+  utter_ask_q9e:
+  - text: Are you satisfied with the quality of this module?
+  utter_ask_q10e:
+  - text: Is there anything else you would like to add regarding this module?
+  utter_ask_q10eb:
+  - text: What would you like to add regarding this module?
+  utter_ask_ql1e:
+  - text: Thanks for providing feedback regarding this module. Let me now ask you about the lecturer. How satisfied are you with the lecturer?
+  utter_ask_ql2e:
+  - text: How well did the lecturer explain the material?
+  utter_ask_ql3e:
+  - text: How much interest and enthusiasm did the lecturer generate?
+  utter_ask_ql4e:
+  - text: How approachable was the lecturer?
+  utter_ask_ql5e:
+  - text: Is there anything else you would like to add regarding this lecturer?
+  utter_ask_ql5eb:
+  - text: What would you like to add regarding this lecturer?
+  utter_ask_q1t:
+  - text: First we will talk about your perception of the Thermodynamics module. Let us start with the first question. By the end of the module, how well do you think the aims and objectives will have been met?
+  utter_ask_q2t:
+  - text: Was the content of the module well structured?
+  utter_ask_q3t:
+  - text: How suitable were the teaching and learning opportunities (e.g. lectures, small groups, practicals) for this module?
+  utter_ask_q4t:
+  - text: Were there appropriate resources (e.g. books, computers, lab equipment etc.) available for this module?
+  utter_ask_q5t:
+  - text: Were there appropriate support materials (e.g. handouts, web pages, problem sheets) available for this module?
+  utter_ask_q6t:
+  - text: How do you feel about the guidance and feedback that you received?
+  utter_ask_q7t:
+  - text: Was the content of the module intellectually stimulating?
+  utter_ask_q8t:
+  - text: Was the workload for this course manageable?
+  utter_ask_q9t:
+  - text: Are you satisfied with the quality of this module?
+  utter_ask_q10t:
+  - text: Is there anything else you would like to add regarding this module?
+  utter_ask_q10tb:
+  - text: What would you like to add regarding this module?
+  utter_ask_ql1t:
+  - text: Thanks for providing feedback regarding this module. Let me now ask you about the lecturer. How satisfied are you with the lecturer?
+  utter_ask_ql2t:
+  - text: How well did the lecturer explain the material?
+  utter_ask_ql3t:
+  - text: How much interest and enthusiasm did the lecturer generate?
+  utter_ask_ql4t:
+  - text: How approachable was the lecturer?
+  utter_ask_ql5t:
+  - text: Is there anything else you would like to add regarding this lecturer?
+  utter_ask_ql5tb:
+  - text: What would you like to add regarding this lecturer?
+  utter_ask_nss1:
+  - text: First we will talk about the teaching of your courses. Let us start with the first question. How good are teaching staff at explaining things?
+  utter_ask_nss2:
+  - text: How often do teaching staff make the subject engaging?
+  utter_ask_nss3:
+  - text: How often is the course intellectually stimulating?
+  utter_ask_nss4:
+  - text: How often does your course challenge you to achieve your best work?
+  utter_ask_nss5:
+  - text: To what extent have you had the chance to explore ideas and concepts in depth?
+  utter_ask_nss6:
+  - text: How well does your course introduce subjects and skills in a way that builds on what you have already learned?
+  utter_ask_nss7:
+  - text: To what extent have you had the chance to bring together information and ideas from different topics
+  utter_ask_nss8:
+  - text: To what extent does your course have the right balance of directed and independent study?
+  utter_ask_nss9:
+  - text: How well has your course developed your knowledge and skills that you think you will need for your future?
+  utter_ask_nss10:
+  - text: Let me ask you some questions about assessment now. How clear were the marking criteria used to assess your work?
+  utter_ask_nss11:
+  - text: How fair has the marking and assessment been on your course?
+  utter_ask_nss12:
+  - text: How well have assessments allowed you to demonstrate what you have learned?
+  utter_ask_nss13:
+  - text: How often have you received assessment feedback on time?
+  utter_ask_nss14:
+  - text: How often does feedback help you to improve your work?
+  utter_ask_nss15:
+  - text: I now have two questiosn about academic support. How easy was it to contact teaching staff when you needed to?
+  utter_ask_nss16:
+  - text: How well have teaching staff supported your learning?
+  utter_ask_nss17:
+  - text: Let us move on to organisation and management. How well organised is your course?
+  utter_ask_nss18:
+  - text: How well were any changes to teaching on your course communicated?
+  utter_ask_nss19:
+  - text: We are now talking about resources. How well have the IT resources and facilities supported your learning?
+  utter_ask_nss20:
+  - text: How well have the library resources (e.g., books, online services and learning spaces) supported your learning?
+  utter_ask_nss21:
+  - text: How easy is it to access subject specific resources (e.g., equipment, facilities, software) when you need them?
+  utter_ask_nss22:
+  - text: Student voice. To what extent do you get the right opportunities to give feedback on your course?
+  utter_ask_nss23:
+  - text: To what extent are students' opinions about the course valued by staff?
+  utter_ask_nss24:
+  - text: How clear is it that students' feedback on the course is acted on?
+  utter_ask_nss25:
+  - text: How well does the students' union (association or guild) represent students' academic interests?
+  utter_ask_nss26:
+  - text: Looking back on the experience, are there any particularly positive or negative aspects you would like to highlight?
+  utter_ask_nss27:
+  - text: Almost done, just a few more questions. How well communicated was information about your university/college's mental wellbeing support services?
+  utter_ask_nss28:
+  - text: During your studies, how free did you feel to express your ideas, opinions, and beliefs?
+  utter_ask_nss_optional:
+  - text: Do you wish to answer some optional questions?
+  utter_ask_nss1_opt:
+  - text: Has the course helped you to present yourself with confidence?
+  utter_ask_nss2_opt:
+  - text: Have your communication skills improved?
+  utter_ask_nss3_opt:
+  - text: As a result of the course, do you feel confident in tackling unfamiliar problems?
+  utter_ask_nss4_opt:
+  - text: Has the Students’ Union (Association or Guild) had a positive impact on your sense of belonging to the university or college?
+  utter_ask_nss5_opt:
+  - text: Has the Students’ Union (Association or Guild) had a positive impact on the local community?
+  utter_ask_nss6_opt:
+  - text: Has the Students’ Union (Association or Guild) helped you develop useful life skills?
+  utter_ask_nss7_opt:
+  - text: As a result of your course, do you believe that you have improved your career prospects?
+  utter_ask_nss8_opt:
+  - text: Is good advice available for making career choices?
+  utter_ask_nss9_opt:
+  - text: Is good advice available on further study opportunities?
+  utter_ask_nss10_opt:
+  - text: Are all of the compulsory modules relevant to your course?
+  utter_ask_nss11_opt:
+  - text: Is there an appropriate range of options to choose from on your course?
+  utter_ask_nss12_opt:
+  - text: Do the modules of your course form a coherent integrated whole?
+  utter_ask_nss13_opt:
+  - text: Have you had opportunities to interact socially with other students?
+  utter_ask_nss14_opt:
+  - text: Are you satisfied with the range of clubs and societies on offer?
+  utter_ask_nss15_opt:
+  - text: Are you satisfied with the range of entertainment and social events on offer?
+  utter_ask_nss16_opt:
+  - text: Have learning materials made available on your course enhanced your learning?
+  utter_ask_nss17_opt:
+  - text: Has the range and balance of approaches to teaching helped you to learn?
+  utter_ask_nss18_opt:
+  - text: Has the delivery of your course been stimulating?
+  utter_ask_nss19_opt:
+  - text: Has your learning benefited from modules that are informed by current research?
+  utter_ask_nss20_opt:
+  - text: Have practical activities on your course helped you to learn?
+  utter_ask_nss21_opt:
+  - text: Has security been satisfactory when attending classes?
+  utter_ask_nss22_opt:
+  - text: Does your institution provide an appropriate environment in which to learn?
+  utter_ask_nss23_opt:
+  - text: Is there sufficient provision of welfare and student services to meet your needs?
+  utter_ask_nss24_opt:
+  - text: When needed, has the information and advice offered by welfare and student services been helpful?
+  utter_ask_nss25_opt:
+  - text: Is the workload on your course manageable?
+  utter_ask_nss26_opt:
+  - text: Does this course apply unnecessary pressure on you as a student?
+  utter_ask_nss27_opt:
+  - text: Does the volume of work on your course mean you can always complete it to your satisfaction?
+  utter_ask_nss28_opt:
+  - text: Are you generally given enough time to understand the things you have to learn?
+  utter_ask_nss29_opt:
+  - text: Does the teaching staff test what you have understood rather than what you have memorised?
+  utter_ask_nss30_opt:
+  - text: Do the assessment methods employed in your course require an in-depth understanding of the course content?
+  utter_ask_nss31_opt:
+  - text: Do you feel part of a group of students committed to learning?
+  utter_ask_nss32_opt:
+  - text: Have you been able to explore academic interests with other students?
+  utter_ask_nss33_opt:
+  - text: Have you learned to explore ideas confidently?
+  utter_ask_nss34_opt:
+  - text: Within your course, do you feel your suggestions and ideas are valued?
+  utter_ask_nss35_opt:
+  - text: Do you feel part of an academic community in your college or university?
+  utter_ask_nss36_opt:
+  - text: Have you found the course motivating?
+  utter_ask_nss37_opt:
+  - text: Has the course stimulated your interest in the field of study?
+  utter_ask_nss38_opt:
+  - text: Has the course stimulated your enthusiasm for further learning?
+  utter_ask_nss39_opt:
+  - text: If you were interested in starting your own business, do you know where you could find support in your institution?
+  utter_ask_nss40_opt:
+  - text: Has your Higher Education experience helped you develop skills that could help you run your own business in future?
+  utter_ask_nss41_opt:
+  - text: As a result of your Higher Education experience, are you more likely to consider running your own business in the future?
+  utter_ask_nss42_opt:
+  - text: Has your Higher Education experience helped you plan for your future career?
+  utter_ask_nss43_opt:
+  - text: Has your institution offered activities and resources designed to prepare you for the next step in your career?
+  utter_ask_nss44_opt:
+  - text: Will the skills you have developed during your time in Higher Education will be useful for your future career?
+  utter_ask_nss45_opt:
+  - text: Does your institution encourage good environmental practice?
+  utter_ask_nss46_opt:
+  - text: Has your course encouraged you to think about environmental sustainability?
+  utter_ask_nss47_opt:
+  - text: Have you had opportunities to take part in activities supporting environmental sustainability?
+  utter_ask_nss48_opt:
+  - text: Do you feel safe to be yourself at university/college?
+  utter_ask_nss49_opt:
+  - text: Does your institution take responsibility for your safety?
   utter_done:
-  - text: Lovely. We have reached the end of our practice session. I have generated some feedback for you. Hope this can be useful and that you have enjoyed practicing with me today. Feel free to try the practice again, using your id, at any time. If you have any questions or concerns or have encountered any issue during the session, please email us at interviewbot@ic.ac.uk. Thanks for your participation!
+  - text: Lovely. We have reached the end of our chat. If you have any questions or concerns or have encountered any issue during the session, please email us at mjouaiti@ic.ac.uk. Thanks so much for your participation!
   utter_bye:
-  - text: Bye! Have a nice day! And good luck with your interview!
-  utter_ask_internship:
-  - text: Can you give me more information about that?
-  - text: What were your tasks?
-  - text: What was the biggest challenge you had to overcome?
-  utter_ask_hobby:
-  - text: Can you give me more information about that?
-entities:
-- quality
-- topic
-- internship
-#- future
-- PERSON
-- otherinterests
-- about
-- motiv
+  - text: Bye! Have a nice day!
 slots:
-  hs:
+  module:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: hs
-  passion:
+      - active_loop: module_form
+        requested_slot: module
+  confirm:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: passion
-  extra:
+      - active_loop: module_form
+        requested_slot: confirm
+  nss_optional:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: extra
-  sport:
+      - active_loop: module_form
+        requested_slot: nss_optional
+  q1e:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: sport
-  sport1:
+      - active_loop: module_form
+        requested_slot: q1e
+  q2e:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: sport1
-  music:
+      - active_loop: module_form
+        requested_slot: q2e
+  q3e:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: music
-  music1:
+      - active_loop: module_form
+        requested_slot: q3e
+  q4e:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: music1
-  music2:
+      - active_loop: module_form
+        requested_slot: q4e
+  q5e:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: music2
-  music3:
+      - active_loop: module_form
+        requested_slot: q5e
+  q6e:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: music3
-  about:
+      - active_loop: module_form
+        requested_slot: q6e
+  q7e:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: about
-  quality:
-    type: text
-    mappings:
-    - type: from_entity
-      entity: quality
-  interest:
+      - active_loop: module_form
+        requested_slot: q7e
+  q8e:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: interest
-  otherinterests:
+      - active_loop: module_form
+        requested_slot: q8e
+  q9e:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: otherinterests
-  future:
+      - active_loop: module_form
+        requested_slot: q9e
+  q10e:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: future
-  topic:
-    type: text
-    mappings:
-    - type: from_entity
-      entity: topic
-#  future2:
-#    type: text
-#    mappings:
-#    - type: from_text
-#      conditions:
-#      - active_loop: interview_form
-#        requested_slot: future2
-  internship:
+      - active_loop: module_form
+        requested_slot: q10e
+  q10eb:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: internship
-  motiv:
+      - active_loop: module_form
+        requested_slot: q10eb
+  ql1e:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: motiv
-  hobby:
+      - active_loop: module_form
+        requested_slot: ql1e
+  ql2e:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: hobby
-  courses:
+      - active_loop: module_form
+        requested_slot: ql2e
+  ql3e:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: courses
-  mathdone1:
+      - active_loop: module_form
+        requested_slot: ql3e
+  ql4e:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: mathdone1
-  mathdone2:
+      - active_loop: module_form
+        requested_slot: ql4e
+  ql5e:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: mathdone2
-  math1:
+      - active_loop: module_form
+        requested_slot: ql5e
+  ql5eb:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: math1
-  math2:
+      - active_loop: module_form
+        requested_slot: ql5eb
+  q1t:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: math2
-  math3:
+      - active_loop: module_form
+        requested_slot: q1t
+  q2t:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: math3
-#  math4:
-#    type: text
-#    mappings:
-#    - type: from_text
-#      conditions:
-#      - active_loop: interview_form
-#        requested_slot: math4
-  no1:
+      - active_loop: module_form
+        requested_slot: q2t
+  q3t:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: no1
-  no2:
+      - active_loop: module_form
+        requested_slot: q3t
+  q4t:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: no2
-  startmath:
+      - active_loop: module_form
+        requested_slot: q4t
+  q5t:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: startmath
-  help:
+      - active_loop: module_form
+        requested_slot: q5t
+  q6t:
     type: text
     mappings:
     - type: from_text
       conditions:
-      - active_loop: interview_form
-        requested_slot: help
+      - active_loop: module_form
+        requested_slot: q6t
+  q7t:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: q7t
+  q8t:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: q8t
+  q9t:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: q9t
+  q10t:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: q10
+  q10tb:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: q10tb
+  ql1t:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: ql1t
+  ql2t:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: ql2t
+  ql3t:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: ql3t
+  ql4t:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: ql4t
+  ql5t:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: ql5t
+  ql5tb:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: qlt5b
+  nss1:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss1
+  nss2:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss2
+  nss3:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss3
+  nss4:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss5
+  nss6:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss6
+  nss7:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss7
+  nss8:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss8
+  nss9:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss9
+  nss10:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss10
+  nss11:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss11
+  nss12:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss12
+  nss13:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss13
+  nss14:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss14
+  nss15:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss15
+  nss16:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss16
+  nss17:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss17
+  nss18:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss18
+  nss19:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss19
+  nss20:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss20
+  nss21:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss21
+  nss22:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss22
+  nss23:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss23
+  nss24:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss24
+  nss25:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss25
+  nss26:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss26
+  nss27:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss27
+  nss28:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss28
+  nss1_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss1_opt
+  nss2_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss2_opt
+  nss3_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss3_opt
+  nss4_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss4_opt
+  nss5_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss5_opt
+  nss6_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss6_opt
+  nss7_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss7_opt
+  nss8_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss8_opt
+  nss9_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss9_opt
+  nss10_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss10_opt
+  nss11_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss11_opt
+  nss12_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss12_opt
+  nss13_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss13_opt
+  nss14_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss14_opt
+  nss15_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss15_opt
+  nss16_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss16_opt
+  nss17_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss17_opt
+  nss18_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss18_opt
+  nss19_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss19_opt
+  nss20_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss20_opt
+  nss21_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss21_opt
+  nss22_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss22_opt
+  nss23_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss23_opt
+  nss24_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss24_opt
+  nss25_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss25_opt
+  nss26_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss26_opt
+  nss27_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss27_opt
+  nss28_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss28_opt
+  nss29_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss29_opt
+  nss30_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss30_opt
+  nss31_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss31_opt
+  nss32_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss32_opt
+  nss33_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss33_opt
+  nss34_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss34_opt
+  nss35_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss35_opt
+  nss36_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss36_opt
+  nss37_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss37_opt
+  nss38_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss38_opt
+  nss39_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss39_opt
+  nss40_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss40_opt
+  nss41_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss41_opt
+  nss42_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss42_opt
+  nss43_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss43_opt
+  nss44_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss44_opt
+  nss45_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss45_opt
+  nss46_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss46_opt
+  nss47_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss47_opt
+  nss48_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss48_opt
+  nss49_opt:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: module_form
+        requested_slot: nss49_opt
 forms:
-  interview_form:
+  module_form:
     required_slots:
-    - hs
-    - passion
-    - interest
-    - future
-    - sport
-    - sport1
-    - music
-    - music1
-    - music2
-    - music3
-    - extra
-    - startmath
-    - math1
-    - no1
-    - math2
-    - no2
-    - math3
-    - help
-    - mathdone1
-    - mathdone2
+    - module
+    - confirm
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -312,39 +1047,4 @@ actions:
 - utter_greet
 - utter_intro
 
-- validate_interview_form
-#- validate_math_form
-
-
-
-#  utter_ask_about:
-#  - text: Nice to meet you! My name is BrainBot. Why don't you tell me about yourself in 2, 3 sentences?
-#  utter_ask_quality:
-#  - text: What is your best quality?
-#  utter_ask_graph:
-#  - text: Please grab a pen and paper and sketch a graph for the following equations. Let me know when you are done.
-#  - text: I would say {quality} is definitely a great quality! Why are you interested in the Mechanical Engineering course at Imperial?
-#  utter_ask_otherinterests:
-#  - text: What are your interests, other than Mechanical Engineering, of course?
-#  utter_ask_future2:
-#  - text: You just mentioned you want to be {future}. Why do you think that this is the right career for you?
-#  - text: Why do you think you would be a good {future}?
-#  utter_ask_motiv:
-#  - text: Brilliant plan. How do you think that Imperial can help you achieve that?
-#  utter_ask_courses:
-#  - text: You just mentioned being interested in some courses, can you tell me which ones in particular?
-#  - text: I understand that you are interested in some courses, can you tell me more about that?
-#  - text: You just mentioned the curriculum, which courses are you interested in?
-#  utter_ask_hobby:
-#  - text: What do you like to do in your free time?
-
-
-#    - interest
-#    - otherinterests
-#    - future
-#    - quality
-#    - motiv
-#    - hobby
-#  math_form:
-#    required_slots:
-#    - help
+- validate_module_form
