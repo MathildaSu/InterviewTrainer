@@ -20,4 +20,4 @@ rules:
   steps:
   - action: module_form
   - active_loop: null
-  - action: module_form
+  - action: utter_done

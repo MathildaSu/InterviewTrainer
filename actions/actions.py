@@ -48,9 +48,12 @@ class ValidateModuleForm(FormValidationAction):
         updated_slots = domain_slots.copy()
                 
         if tracker.slots.get("module") == "embedded C programming" and tracker.slots.get("confirm") == "yes":
-            additional_slots += ["q1e", "q2e", "q3e", "q4e", "q5e", "q6e", "q7e", "q8e", "q9e", "q10e", "ql1e", "ql2e", "ql3e", "ql4e", "ql5e"]
+            additional_slots += ["q1ec", "q2ec", "q3ec"]
         if tracker.slots.get("module") == "thermodynamics" and tracker.slots.get("confirm") == "yes":
-            additional_slots += ["q1t", "q2t", "q3t", "q4t", "q5t", "q6t", "q7t", "q8t", "q9t", "q10t", "ql1t", "ql2t", "ql3t", "ql4t", "ql5t"]
+            additional_slots += ["q1t2", "q2t2", "q3t2", "q4t2", "q5t2", "q6t2"]
+        if tracker.slots.get("module") == "stress analysis" and tracker.slots.get("confirm") == "yes":
+            additional_slots += ["q1sa", "q2sa", "q3sa", "q4sa", "q5sa"]
+            
         if tracker.slots.get("module") == "NSS" and tracker.slots.get("confirm") == "yes":
             additional_slots += ["nss" + str(n) for n in range(1,29)]
             
@@ -59,23 +62,17 @@ class ValidateModuleForm(FormValidationAction):
             additional_slots += np.sample(available_slots, 10)
         
         if tracker.slots.get("nss27") != None:
-            additional_slots.append("nss_optional")
+            return ["nss_optional"] + updated_slots
             
-        if tracker.slots.get("ql5e") == "yes":
-            additional_slots.append("ql5eb")
+        if tracker.slots.get("ql5") == "yes":
+            return ["ql5b"] + updated_slots
             
-        if tracker.slots.get("q10e") == "yes":
-            additional_slots.append("q10eb")
-            
-        if tracker.slots.get("ql5t") == "yes":
-            additional_slots.append("ql5tb")
-            
-        if tracker.slots.get("q10t") == "yes":
-            additional_slots.append("q10tb")
+        if tracker.slots.get("q5") == "yes":
+            return ["q5b"] + updated_slots
         
         text_of_last_user_message = tracker.latest_message.get("text")
 
-        return additional_slots + updated_slots
+        return  updated_slots + additional_slots
 
     def validate_module(
         self,
@@ -89,10 +86,12 @@ class ValidateModuleForm(FormValidationAction):
             if not "." in slot_value:
                 return {"module": None}
             slot_value = slot_value[:-1].lower().split(" ")
-            if "embedded" in slot_value:
+            if "embedded" in slot_value or "programming" in slot_value:
                 return {"module": "embedded C programming"}
-            elif "thermodynamics" in slot_value:
+            elif "thermodynamics" in slot_value or "thermo" in slot_value:
                 return {"module": "thermodynamics"}
+            elif "stress" in slot_value or "analysis" in slot_value:
+                return {"module": "stress analysis"}
             elif "nss" in slot_value or "exit" in slot_value:
                 return {"module": "NSS"}
             else:
@@ -139,7 +138,7 @@ class ValidateModuleForm(FormValidationAction):
         return {"nss_optional": tracker.slots.get("nss_optional")}
         
         
-    def validate_ql1e(
+    def validate_ql1(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -147,12 +146,12 @@ class ValidateModuleForm(FormValidationAction):
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
         """Validate value."""
-        if tracker.slots["requested_slot"] == "ql1e":
+        if tracker.slots["requested_slot"] == "ql1":
             if not "." in slot_value:
-                return {"ql1e": None}
-        return {"ql1e": tracker.slots.get("ql1e")}
+                return {"ql1": None}
+        return {"ql1": tracker.slots.get("ql1")}
                 
-    def validate_ql2e(
+    def validate_ql2(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -160,12 +159,12 @@ class ValidateModuleForm(FormValidationAction):
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
         """Validate value."""
-        if tracker.slots["requested_slot"] == "ql2e":
+        if tracker.slots["requested_slot"] == "ql2":
             if not "." in slot_value:
-                return {"ql2e": None}
-        return {"ql2e": tracker.slots.get("ql2e")}
+                return {"ql2": None}
+        return {"ql2": tracker.slots.get("ql2")}
                 
-    def validate_ql3e(
+    def validate_ql3(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -173,12 +172,12 @@ class ValidateModuleForm(FormValidationAction):
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
         """Validate value."""
-        if tracker.slots["requested_slot"] == "ql3e":
+        if tracker.slots["requested_slot"] == "ql3":
             if not "." in slot_value:
-                return {"ql3e": None}
-        return {"ql3e": tracker.slots.get("ql3e")}
+                return {"ql3": None}
+        return {"ql3": tracker.slots.get("ql3")}
                 
-    def validate_ql4e(
+    def validate_ql4(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -186,31 +185,31 @@ class ValidateModuleForm(FormValidationAction):
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
         """Validate value."""
-        if tracker.slots["requested_slot"] == "ql4e":
+        if tracker.slots["requested_slot"] == "ql4":
             if not "." in slot_value:
-                return {"ql4e": None}
-        return {"ql4e": tracker.slots.get("ql4e")}
+                return {"ql4": None}
+        return {"ql4": tracker.slots.get("ql4")}
         
-    def validate_ql5e(
+    def validate_ql5(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
-        if tracker.slots["requested_slot"] != "ql5e":
-            return {"ql5e": tracker.slots.get("ql5e")}
+        if tracker.slots["requested_slot"] != "ql5":
+            return {"ql5": tracker.slots.get("ql5")}
         if not "." in slot_value:
-            return {"ql5e": None}
+            return {"ql5": None}
             
         slot_value = slot_value[:-1].lower().split(" ")
         
         if "yes" in slot_value or ("do" in slot_value and len(slot_value) < 4):
-            return {"ql5e": "yes"}
+            return {"ql5": "yes"}
         else:
-            return {"ql5e": "no"}
+            return {"ql5": "no"}
                             
-    def validate_ql5eb(
+    def validate_ql5b(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -220,10 +219,10 @@ class ValidateModuleForm(FormValidationAction):
         """Validate value."""
         if tracker.slots["requested_slot"] == "ql5b":
             if not "." in slot_value:
-                return {"ql5eb": None}
-        return {"ql5eb": tracker.slots.get("ql5eb")}
+                return {"ql5b": None}
+        return {"ql5b": tracker.slots.get("ql5b")}
         
-    def validate_q1e(
+    def validate_q1(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -231,12 +230,12 @@ class ValidateModuleForm(FormValidationAction):
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
         """Validate value."""
-        if tracker.slots["requested_slot"] == "q1e":
+        if tracker.slots["requested_slot"] == "q1":
             if not "." in slot_value:
-                return {"q1e": None}
-        return {"q1e": tracker.slots.get("q1e")}
+                return {"q1": None}
+        return {"q1": tracker.slots.get("q1")}
                     
-    def validate_q2e(
+    def validate_q2(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -244,12 +243,12 @@ class ValidateModuleForm(FormValidationAction):
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
         """Validate value."""
-        if tracker.slots["requested_slot"] == "q2e":
+        if tracker.slots["requested_slot"] == "q2":
             if not "." in slot_value:
-                return {"q2e": None}
-        return {"q2e": tracker.slots.get("q2e")}
+                return {"q2": None}
+        return {"q2": tracker.slots.get("q2")}
                     
-    def validate_q3e(
+    def validate_q3(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -257,12 +256,12 @@ class ValidateModuleForm(FormValidationAction):
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
         """Validate value."""
-        if tracker.slots["requested_slot"] == "q3e":
+        if tracker.slots["requested_slot"] == "q3":
             if not "." in slot_value:
-                return {"q3e": None}
-        return {"q3e": tracker.slots.get("q3e")}
+                return {"q3": None}
+        return {"q3": tracker.slots.get("q3")}
                     
-    def validate_q4e(
+    def validate_q4(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -270,12 +269,12 @@ class ValidateModuleForm(FormValidationAction):
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
         """Validate value."""
-        if tracker.slots["requested_slot"] == "q4e":
+        if tracker.slots["requested_slot"] == "q4":
             if not "." in slot_value:
-                return {"q4e": None}
-        return {"q4e": tracker.slots.get("q4e")}
+                return {"q4": None}
+        return {"q4": tracker.slots.get("q4")}
                     
-    def validate_q5e(
+    def validate_q5(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -283,93 +282,18 @@ class ValidateModuleForm(FormValidationAction):
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
         """Validate value."""
-        if tracker.slots["requested_slot"] == "q5e":
+        if tracker.slots["requested_slot"] == "q5":
             if not "." in slot_value:
-                return {"q5e": None}
-        return {"q5e": tracker.slots.get("q5e")}
-                    
-    def validate_q6e(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "q6e":
-            if not "." in slot_value:
-                return {"q6e": None}
-        return {"q6e": tracker.slots.get("q6e")}
-                    
-    def validate_q7e(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "q7e":
-            if not "." in slot_value:
-                return {"q7e": None}
-        return {"q7e": tracker.slots.get("q7e")}
-                    
-    def validate_q8e(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "q8e":
-            if not "." in slot_value:
-                return {"q8e": None}
-        return {"q8e": tracker.slots.get("q8e")}
-                    
-    def validate_q9e(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "q9e":
-            if not "." in slot_value:
-                return {"q9e": None}
-        return {"q9e": tracker.slots.get("q9e")}
-        
-    def validate_q10e(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        if tracker.slots["requested_slot"] != "q10e":
-            return {"q10e": tracker.slots.get("q10e")}
+                return {"q5": None}
+                
         slot_value = slot_value[:-1].lower().split(" ")
         
         if "yes" in slot_value or ("do" in slot_value and len(slot_value) < 4):
-            return {"q10e": "yes"}
+            return {"q5": "yes"}
         else:
-            return {"q10e": "no"}
-                    
-    def validate_q10eb(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "q10eb":
-            if not "." in slot_value:
-                return {"q10eb": None}
-        return {"q10eb": tracker.slots.get("q10eb")}
+            return {"q5": "no"}
         
-    def validate_ql1t(
+    def validate_q1t2(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -377,228 +301,180 @@ class ValidateModuleForm(FormValidationAction):
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
         """Validate value."""
-        if tracker.slots["requested_slot"] == "ql1t":
+        if tracker.slots["requested_slot"] == "q1t2":
             if not "." in slot_value:
-                return {"ql1t": None}
-        return {"ql1t": tracker.slots.get("ql1t")}
+                return {"q1t2": None}
+        return {"q1t2": tracker.slots.get("q1t2")}
+        
+    def validate_q2t2(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        """Validate value."""
+        if tracker.slots["requested_slot"] == "q2t2":
+            if not "." in slot_value:
+                return {"q2t2": None}
+        return {"q2t2": tracker.slots.get("q2t2")}
+        
+    def validate_q3t2(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        """Validate value."""
+        if tracker.slots["requested_slot"] == "q3t2":
+            if not "." in slot_value:
+                return {"q3t2": None}
+        return {"q3t2": tracker.slots.get("q3t2")}
+        
+    def validate_q4t2(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        """Validate value."""
+        if tracker.slots["requested_slot"] == "q4t2":
+            if not "." in slot_value:
+                return {"q4t2": None}
+        return {"q4t2": tracker.slots.get("q4t2")}
+        
+    def validate_q5t2(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        """Validate value."""
+        if tracker.slots["requested_slot"] == "q5t2":
+            if not "." in slot_value:
+                return {"q5t2": None}
+        return {"q5t2": tracker.slots.get("q5t2")}
+        
+    def validate_q6t2(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        """Validate value."""
+        if tracker.slots["requested_slot"] == "q6t2":
+            if not "." in slot_value:
+                return {"q6t2": None}
+        return {"q6t2": tracker.slots.get("q6t2")}
+        
+    def validate_q1sa(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        """Validate value."""
+        if tracker.slots["requested_slot"] == "q1sa":
+            if not "." in slot_value:
+                return {"q1sa": None}
+        return {"q1sa": tracker.slots.get("q1sa")}
+        
+    def validate_q2sa(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        """Validate value."""
+        if tracker.slots["requested_slot"] == "q2sa":
+            if not "." in slot_value:
+                return {"q2sa": None}
+        return {"q2sa": tracker.slots.get("q2sa")}
+        
+    def validate_q3sa(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        """Validate value."""
+        if tracker.slots["requested_slot"] == "q3sa":
+            if not "." in slot_value:
+                return {"q3sa": None}
+        return {"q3sa": tracker.slots.get("q3sa")}
+        
+    def validate_q4sa(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        """Validate value."""
+        if tracker.slots["requested_slot"] == "q4sa":
+            if not "." in slot_value:
+                return {"q4sa": None}
+        return {"q4sa": tracker.slots.get("q4sa")}
+        
+    def validate_q5sa(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        """Validate value."""
+        if tracker.slots["requested_slot"] == "q5sa":
+            if not "." in slot_value:
+                return {"q5sa": None}
+        return {"q5sa": tracker.slots.get("q5sa")}
+        
+    def validate_q1ec(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        """Validate value."""
+        if tracker.slots["requested_slot"] == "q1ec":
+            if not "." in slot_value:
+                return {"q1ec": None}
+        return {"q1ec": tracker.slots.get("q1ec")}
+        
+    def validate_q2ec(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        """Validate value."""
+        if tracker.slots["requested_slot"] == "q2ec":
+            if not "." in slot_value:
+                return {"q2ec": None}
+        return {"q2ec": tracker.slots.get("q2ec")}
+        
+    def validate_q3ec(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        """Validate value."""
+        if tracker.slots["requested_slot"] == "q3ec":
+            if not "." in slot_value:
+                return {"q3ec": None}
+        return {"q3ec": tracker.slots.get("q3ec")}
                 
-    def validate_ql2t(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "ql2t":
-            if not "." in slot_value:
-                return {"ql2t": None}
-        return {"ql2t": tracker.slots.get("ql2t")}
-                
-    def validate_ql3t(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "ql3t":
-            if not "." in slot_value:
-                return {"ql3t": None}
-        return {"ql3t": tracker.slots.get("ql3t")}
-                
-    def validate_ql4t(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "ql4t":
-            if not "." in slot_value:
-                return {"ql4t": None}
-        return {"ql4t": tracker.slots.get("ql4t")}
-        
-    def validate_ql5t(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        if tracker.slots["requested_slot"] != "ql5t":
-            return {"ql5t": tracker.slots.get("ql5t")}
-        if not "." in slot_value:
-            return {"ql5t": None}
-            
-        slot_value = slot_value[:-1].lower().split(" ")
-        
-        if "yes" in slot_value or ("do" in slot_value and len(slot_value) < 4):
-            return {"ql5t": "yes"}
-        else:
-            return {"ql5t": "no"}
-                            
-    def validate_ql5tb(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "ql5tb":
-            if not "." in slot_value:
-                return {"ql5tb": None}
-        return {"ql5tb": tracker.slots.get("ql5tb")}
-        
-    def validate_q1t(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "q1t":
-            if not "." in slot_value:
-                return {"q1t": None}
-        return {"q1t": tracker.slots.get("q1t")}
-                    
-    def validate_q2t(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "q2t":
-            if not "." in slot_value:
-                return {"q2t": None}
-        return {"q2t": tracker.slots.get("q2t")}
-                    
-    def validate_q3t(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "q3t":
-            if not "." in slot_value:
-                return {"q3t": None}
-        return {"q3t": tracker.slots.get("q3t")}
-                    
-    def validate_q4t(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "q4t":
-            if not "." in slot_value:
-                return {"q4t": None}
-        return {"q4t": tracker.slots.get("q4t")}
-                    
-    def validate_q5t(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "q5t":
-            if not "." in slot_value:
-                return {"q5t": None}
-        return {"q5t": tracker.slots.get("q5t")}
-                    
-    def validate_q6t(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "q6t":
-            if not "." in slot_value:
-                return {"q6t": None}
-        return {"q6t": tracker.slots.get("q6t")}
-                    
-    def validate_q7t(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "q7t":
-            if not "." in slot_value:
-                return {"q7t": None}
-        return {"q7t": tracker.slots.get("q7t")}
-                    
-    def validate_q8t(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "q8t":
-            if not "." in slot_value:
-                return {"q8t": None}
-        return {"q8t": tracker.slots.get("q8t")}
-                    
-    def validate_q9t(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "q9t":
-            if not "." in slot_value:
-                return {"q9t": None}
-        return {"q9t": tracker.slots.get("q9t")}
-        
-    def validate_q10t(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        if tracker.slots["requested_slot"] != "q10t":
-            return {"q10t": tracker.slots.get("q10t")}
-        slot_value = slot_value[:-1].lower().split(" ")
-        
-        if "yes" in slot_value or ("do" in slot_value and len(slot_value) < 4):
-            return {"q10t": "yes"}
-        else: # "do" in slot_value or "have" in slot_value or "yes" in slot_value:
-            return {"q10t": "no"}
-                    
-    def validate_q10tb(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        """Validate value."""
-        if tracker.slots["requested_slot"] == "q10tb":
-            if not "." in slot_value:
-                return {"q10tb": None}
-        return {"q10tb": tracker.slots.get("q10tb")}
-                    
     def validate_nss1(
         self,
         slot_value: Any,

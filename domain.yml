@@ -13,74 +13,58 @@ responses:
   - text: Let's start by telling me which module you would like to evaluate today?
   utter_ask_confirm:
   - text: I understand that you want to give feedback on the {module} course. Is that correct?
-  utter_ask_q1e:
-  - text: First we will talk about your perception of the Embedded C programming module. Let us start with the first question. By the end of the module, how well do you think the aims and objectives will have been met?
-  utter_ask_q2e:
-  - text: Was the content of the module well structured?
-  utter_ask_q3e:
-  - text: How suitable were the teaching and learning opportunities (e.g. lectures, small groups, practicals) for this module?
-  utter_ask_q4e:
-  - text: Were there appropriate resources (e.g. books, computers, lab equipment etc.) available for this module?
-  utter_ask_q5e:
+  utter_ask_q1:
+  - text: First we will talk about your perception of the module. Was the content of the module well structured?
+  utter_ask_q2:
   - text: Were there appropriate support materials (e.g. handouts, web pages, problem sheets) available for this module?
-  utter_ask_q6e:
-  - text: How do you feel about the guidance and feedback that you received?
-  utter_ask_q7e:
-  - text: Was the content of the module intellectually stimulating?
-  utter_ask_q8e:
+  utter_ask_q3:
   - text: Was the workload for this course manageable?
-  utter_ask_q9e:
+  utter_ask_q4:
   - text: Are you satisfied with the quality of this module?
-  utter_ask_q10e:
+  utter_ask_q5:
   - text: Is there anything else you would like to add regarding this module?
-  utter_ask_q10eb:
+  utter_ask_q5b:
   - text: What would you like to add regarding this module?
-  utter_ask_ql1e:
+  utter_ask_ql1:
   - text: Thanks for providing feedback regarding this module. Let me now ask you about the lecturer. How satisfied are you with the lecturer?
-  utter_ask_ql2e:
+  utter_ask_ql2:
   - text: How well did the lecturer explain the material?
-  utter_ask_ql3e:
+  utter_ask_ql3:
   - text: How much interest and enthusiasm did the lecturer generate?
-  utter_ask_ql4e:
+  utter_ask_ql4:
   - text: How approachable was the lecturer?
-  utter_ask_ql5e:
+  utter_ask_ql5:
   - text: Is there anything else you would like to add regarding this lecturer?
-  utter_ask_ql5eb:
+  utter_ask_ql5b:
   - text: What would you like to add regarding this lecturer?
-  utter_ask_q1t:
-  - text: First we will talk about your perception of the Thermodynamics module. Let us start with the first question. By the end of the module, how well do you think the aims and objectives will have been met?
-  utter_ask_q2t:
-  - text: Was the content of the module well structured?
-  utter_ask_q3t:
-  - text: How suitable were the teaching and learning opportunities (e.g. lectures, small groups, practicals) for this module?
-  utter_ask_q4t:
-  - text: Were there appropriate resources (e.g. books, computers, lab equipment etc.) available for this module?
-  utter_ask_q5t:
-  - text: Were there appropriate support materials (e.g. handouts, web pages, problem sheets) available for this module?
-  utter_ask_q6t:
-  - text: How do you feel about the guidance and feedback that you received?
-  utter_ask_q7t:
-  - text: Was the content of the module intellectually stimulating?
-  utter_ask_q8t:
-  - text: Was the workload for this course manageable?
-  utter_ask_q9t:
-  - text: Are you satisfied with the quality of this module?
-  utter_ask_q10t:
-  - text: Is there anything else you would like to add regarding this module?
-  utter_ask_q10tb:
-  - text: What would you like to add regarding this module?
-  utter_ask_ql1t:
-  - text: Thanks for providing feedback regarding this module. Let me now ask you about the lecturer. How satisfied are you with the lecturer?
-  utter_ask_ql2t:
-  - text: How well did the lecturer explain the material?
-  utter_ask_ql3t:
-  - text: How much interest and enthusiasm did the lecturer generate?
-  utter_ask_ql4t:
-  - text: How approachable was the lecturer?
-  utter_ask_ql5t:
-  - text: Is there anything else you would like to add regarding this lecturer?
-  utter_ask_ql5tb:
-  - text: What would you like to add regarding this lecturer?
+  utter_ask_q1sa:
+  - text: Did you feel that the Year I progress test helped in your study plan?
+  utter_ask_q2sa:
+  - text: If I were to say "Everything in the world is a spring.", would you agree or disagree with this statement? Relate this to what you have observed in stress analysis.
+  utter_ask_q3sa:
+  - text: Do you feel the material you learned in stress analysis had application in mechanical design?  Can you give me an example of where you may use it?
+  utter_ask_q4sa:
+  - text: Now that you have completed one of your first courses in solid mechanics how do you feel about mechanical engineering core areas of sold mechanics, fluid mechanics, and dynamics and control?  Is any one more or less appealing to you?
+  utter_ask_q5sa:
+  - text: How do you feel about your first year at Imperial? Did it meet your expectations?
+  utter_ask_q1t2:
+  - text: Did you feel that the Year II progress test helped in your study plan?
+  utter_ask_q2t2:
+  - text: Did you feel the thermo-fluids laboratory augmented your understanding of the classroom material?
+  utter_ask_q3t2:
+  - text: Conversely, did you feel the classroom material translated to the experiments you did in the laboratory exercises?
+  utter_ask_q4t2:
+  - text: Did covering material such as turbomachinery add to your interest and understanding of thermodynamics?
+  utter_ask_q5t2:
+  - text: Now that you have completed Thermodynamics II,  how do you feel about mechanical engineering core areas of sold mechanics, fluid mechanics, and dynamics and control?  Is any one more or less appealing to you?
+  utter_ask_q6t2:
+  - text: Do you have any thoughts to share with me about your second year at Imperial in Mechanical Engineering?
+  utter_ask_q1ec:
+  - text: Given the amount of learning and outcomes, was the amount of work reasonable?
+  utter_ask_q2ec:
+  - text: How do you feel about the balance between hardware and software?
+  utter_ask_q3ec:
+  - text: Was the online delivery and classroom time well balanced?
   utter_ask_nss1:
   - text: First we will talk about the teaching of your courses. Let us start with the first question. How good are teaching staff at explaining things?
   utter_ask_nss2:
@@ -263,244 +247,188 @@ slots:
       conditions:
       - active_loop: module_form
         requested_slot: nss_optional
-  q1e:
+  q1:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q1e
-  q2e:
+        requested_slot: q1
+  q2:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q2e
-  q3e:
+        requested_slot: q2
+  q3:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q3e
-  q4e:
+        requested_slot: q3
+  q4:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q4e
-  q5e:
+        requested_slot: q4
+  q5:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q5e
-  q6e:
+        requested_slot: q5
+  q5b:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q6e
-  q7e:
+        requested_slot: q5b
+  ql1:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q7e
-  q8e:
+        requested_slot: ql1
+  ql2:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q8e
-  q9e:
+        requested_slot: ql2
+  ql3:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q9e
-  q10e:
+        requested_slot: ql3
+  ql4:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q10e
-  q10eb:
+        requested_slot: ql4
+  ql5:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q10eb
-  ql1e:
+        requested_slot: ql5
+  ql5b:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: ql1e
-  ql2e:
+        requested_slot: ql5b
+  q1sa:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: ql2e
-  ql3e:
+        requested_slot: q1sa
+  q2sa:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: ql3e
-  ql4e:
+        requested_slot: q2sa
+  q3sa:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: ql4e
-  ql5e:
+        requested_slot: q3sa
+  q4sa:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: ql5e
-  ql5eb:
+        requested_slot: q4sa
+  q5sa:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: ql5eb
-  q1t:
+        requested_slot: q5sa
+  q1t2:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q1t
-  q2t:
+        requested_slot: q1t2
+  q2t2:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q2t
-  q3t:
+        requested_slot: q2t2
+  q3t2:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q3t
-  q4t:
+        requested_slot: q3t2
+  q4t2:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q4t
-  q5t:
+        requested_slot: q4t2
+  q5t2:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q5t
-  q6t:
+        requested_slot: q5t2
+  q6t2:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q6t
-  q7t:
+        requested_slot: q6t2
+  q1ec:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q7t
-  q8t:
+        requested_slot: q1ec
+  q2ec:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q8t
-  q9t:
+        requested_slot: q2ec
+  q3ec:
     type: text
     mappings:
     - type: from_text
       conditions:
       - active_loop: module_form
-        requested_slot: q9t
-  q10t:
-    type: text
-    mappings:
-    - type: from_text
-      conditions:
-      - active_loop: module_form
-        requested_slot: q10
-  q10tb:
-    type: text
-    mappings:
-    - type: from_text
-      conditions:
-      - active_loop: module_form
-        requested_slot: q10tb
-  ql1t:
-    type: text
-    mappings:
-    - type: from_text
-      conditions:
-      - active_loop: module_form
-        requested_slot: ql1t
-  ql2t:
-    type: text
-    mappings:
-    - type: from_text
-      conditions:
-      - active_loop: module_form
-        requested_slot: ql2t
-  ql3t:
-    type: text
-    mappings:
-    - type: from_text
-      conditions:
-      - active_loop: module_form
-        requested_slot: ql3t
-  ql4t:
-    type: text
-    mappings:
-    - type: from_text
-      conditions:
-      - active_loop: module_form
-        requested_slot: ql4t
-  ql5t:
-    type: text
-    mappings:
-    - type: from_text
-      conditions:
-      - active_loop: module_form
-        requested_slot: ql5t
-  ql5tb:
-    type: text
-    mappings:
-    - type: from_text
-      conditions:
-      - active_loop: module_form
-        requested_slot: qlt5b
+        requested_slot: q3ec
   nss1:
     type: text
     mappings:
@@ -1038,6 +966,16 @@ forms:
     required_slots:
     - module
     - confirm
+    - q1
+    - q2
+    - q3
+    - q4
+    - q5
+    - ql1
+    - ql2
+    - ql3
+    - ql4
+    - ql5
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
