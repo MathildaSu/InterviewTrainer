@@ -5,10 +5,12 @@
 
 ## first build all the image and push them to docker
 
+```
 sudo docker build -f Dockerfile -t <accountname>/<rasa repo name>:<tag>  .
 sudo docker push <accountname>/<rasa repo name>:<tag>
 sudo docker build -f Dockerfile-action.yml.dockerfile -t <accountname>/<rasa action repo name>:<tag>  .
 sudo docker push <accountname>/<rasa action repo name>:<tag>
+```
 
 ## in a seperate shell (or screen using command `screen`)
 ```
