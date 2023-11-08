@@ -1,7 +1,7 @@
 version: '3.0'
 services:
   rasa:
-    image: mathildast/rasa-test:debugged
+    image: mathildast/rasa-test:interview
     ports:
       - 80:5005
     volumes:
@@ -15,7 +15,7 @@ services:
       - "actions"
 
   actions:
-    image: mathildast/rasa-action:debugged
+    image: mathildast/rasa-action:interview
     volumes:
       - ./actions:/app/actions
     ports:
