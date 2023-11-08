@@ -1,11 +1,11 @@
 version: "3.1"
 
 stories:
- - story: greet and practise interview (later add feedback)
+ - story: greet and practise interview
    steps:
-   - intent: report
+   - intent: greet
    - action: utter_intro
-   - action: interview_form
-   - active_loop: interview_form
+   - action: module_form
+   - active_loop: module_form
    - intent: bye
    - action: utter_bye
